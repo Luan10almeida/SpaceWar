@@ -17,26 +17,26 @@ class Score:
         pass
 
     def save(self, game_mode: str, player_score: list[int]):
-        pygame.mixer_music.load('./asset/Score.mp3')
+        pygame.mixer_music.load('./asset/Score.mp3.')
         pygame.mixer_music.play(-1)
         db_proxy = DBProxy('DBScore')
         name = ''
         while True:
             self.window.blit(source=self.surf, dest=self.rect)
             self.score_text(48, 'YOU WIN!!', C_YELLOW, SCORE_POS['Title'])
-            text = 'Enter Player 1 name (4 characters):'
+            text = 'Enter Player 1 name (8 characters):'
             score = player_score[0]
             if game_mode == MENU_OPTION[0]:
                 score = player_score[0]
             if game_mode == MENU_OPTION[1]:
                 score = (player_score[0] + player_score[1]) / 2
-                text = 'Enter Team name (4 characters):'
+                text = 'Enter Team name (8 characters):'
             if game_mode == MENU_OPTION[2]:
                 if player_score[0] >= player_score[1]:
                     score = player_score[0]
                 else:
                     score = player_score[1]
-                    text = 'Enter Player 2 name (4 characters):'
+                    text = 'Enter Player 2 name (8 characters):'
             self.score_text(20, text, C_WHITE, SCORE_POS['EnterName'])
 
             for event in pygame.event.get():
