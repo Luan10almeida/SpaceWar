@@ -44,14 +44,14 @@ class Score:
                     pygame.quit()
                     sys.exit()
                 elif event.type == KEYDOWN:
-                    if event.key == K_RETURN and len(name) == 4:
+                    if event.key == K_RETURN and len(name) == 8:
                         db_proxy.save({'name': name, 'score': score, 'date': get_formatted_date()})
                         self.show()
                         return
                     elif event.key == K_BACKSPACE:
                         name = name[:-1]
                     else:
-                        if len(name) < 4:
+                        if len(name) < 8:
                             name += event.unicode
             self.score_text(20, name, C_WHITE, SCORE_POS['Name'])
             pygame.display.flip()
